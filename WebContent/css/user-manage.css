@@ -1,0 +1,213 @@
+body,
+html {
+    -moz-user-select: none;
+    /*火狐*/
+    /*选中文字时避免出现蓝色背景*/
+    -webkit-user-select: none;
+    /*webkit浏览器*/
+    /*选中文字时避免出现蓝色背景*/
+    -ms-user-select: none;
+    /*IE10*/
+    /*选中文字时避免出现蓝色背景*/
+    user-select: none;
+    /*选中文字时避免出现蓝色背景*/
+}
+
+.user-manage {
+    width: 90vw;
+}
+
+.searchUser{
+	position: relative;
+	padding: 20px 15px;			
+}
+
+.searchUser span{
+	font-size: 14px;
+    color: #606266;
+    margin: 0px 5px;
+}
+
+.searchUser input{
+	outline-style: none ;
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+    padding: 6px;
+    width: 200px;
+    font-size: 14px;
+    font-family: "Microsoft soft";
+}
+
+.searchUser input:focus{
+	border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+.searchUser .searchUserBtn{
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	background-color: rgb(64,158,255);
+	color: white;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.searchUserBtn:hover {
+	background-color: rgb(47,146,249);
+}
+
+.searchUserBtn:active {
+	background-color: rgb(64,158,255);
+}
+
+.pagination {
+    margin-top: 18px;
+    font-size: 0;
+    text-align: center;
+}
+
+.pagination .page-li {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 1;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.pagination .page-li:hover {
+    cursor: pointer;
+    background-color: #EAEAEA;
+}
+
+.pagination .page-li.page-active {
+    cursor: default;
+    color: #fff;
+    border-color: #555555;
+    background-color: #555555;
+}
+
+.pagination .page-li.number-ellipsis {
+    border: none;
+    cursor: default;
+}
+
+.pagination .page-li.number-ellipsis:hover {
+    background-color: #fff;
+}
+
+.pagination .page-number {
+    width: 38px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid #EAEAEA;
+    text-align: center;
+}
+
+.pagination .page-prev {
+    padding: 8px 14px;
+    margin-right: 8px;
+    border: 1px solid #EAEAEA;
+}
+
+.pagination .page-prev.no-prev {
+    color: #c6c6c6;
+}
+
+.pagination .page-prev.no-prev:hover {
+    cursor: default;
+    background-color: #fff;
+}
+
+.pagination .page-next {
+    padding: 8px 14px;
+    margin-left: 8px;
+    border: 1px solid #EAEAEA;
+}
+
+.pagination .page-next.no-next {
+    color: #c6c6c6;
+}
+
+.pagination .page-next.no-next:hover {
+    cursor: default;
+    background-color: #fff;
+}
+
+.pagination .number-ellipsis {
+    display: inline-block;
+    font-size: 15px;
+    padding: 8px 14px;
+}
+
+.pagination .number-ellipsis.page-hidden {
+    display: none;
+}
+
+#page-go {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* 分页样式 */
+.table-foot{
+	position: absolute;
+	width: 80%;
+	margin-left: 20vw;
+}
+
+.box {
+    display: inline-block;
+    margin-left: 100px;
+}
+.box-left{
+	display:inline-block;
+}
+
+.user-table{
+	position: relative;
+	width: 100%;
+	height: 80vh;
+}
+
+.user-tablelist{
+	position: relative;
+	width: 100%;
+	height: 80vh;
+	background-color: #eaeaea;
+}
+
+table {
+	overflow: inherit;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table td,
+table th {
+    border: 1px solid #cad9ea;
+    color: #666;
+    height: 30px;
+}
+
+table thead th {
+    background-color: #CCE8EB;
+    width: 90px;
+}
+
+table tr:nth-child(odd) {
+    background: #fff;
+}
+
+table tr:nth-child(even) {
+    background: #F5FAFA;
+}
+
+table tr:hover {
+    background-color: #a6b0b1;
+}

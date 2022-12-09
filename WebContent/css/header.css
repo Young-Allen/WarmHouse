@@ -1,0 +1,106 @@
+.title-nav {
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    box-shadow: 0px 4px 4px -4px black;
+}
+
+.userinfo {
+    width: 500px;
+    height: 100px;
+    background-color: rgb(194, 205, 205);
+    border-radius: 20px;
+    display:table-cell;
+  	vertical-align: middle;
+}
+
+
+.username {
+    display: inline-block;
+    height: 90px;
+    line-height: 90px;
+    margin-left: 20px;
+    background-color: azure;
+    border-radius: 20px;
+    padding: 0px 10px;
+    box-shadow: 4px 4px 6px -4px black;
+  
+}
+
+.icon1 {
+      display: inline-block;
+      background-color: rgb(64, 158, 255);
+      border-radius: 10px;
+      padding: 10px 10px;
+      color: rgb(255, 255, 255);
+      box-shadow: 4px 4px 6px -4px black;
+}
+  
+.icon2 {
+    display: inline-block;
+    background-color: rgb(230, 162, 60);
+    border-radius: 10px;
+    padding: 10px 10px;
+    color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 6px -4px black;
+}
+
+.icon3 {
+    display: inline-block;
+    background-color: rgb(245, 108, 108);
+    border-radius: 10px;
+    padding: 10px 10px;
+    color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 6px -4px black;
+}
+
+.user-menu {
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 15px;
+    position: absolute;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    display: none;
+    box-shadow: 3px 3px 6px -3px black;
+}
+
+.user-menu div {
+	border-radius: 10px;
+	position: relative;
+    margin: 5px 0px;
+    width: 100px;
+    height: 40px;
+}
+
+.user-menu div:hover {
+    background-color: rgb(232,244,255);
+}
+
+.user-menu div a{
+	line-height: 40px;
+    text-decoration:none;
+	color:#000000;
+}
+
+.user-menu div a:hover{
+	color: rgb(70,166,255);
+}
+
+.triangle {
+	width: 0px;
+	height: 0px;
+	text-align: center;
+	position: absolute;
+	top: -10px;
+	left: 37px;
+	border-bottom: 10px solid rgb(255, 255, 255);
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
