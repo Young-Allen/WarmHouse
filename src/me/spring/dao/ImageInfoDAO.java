@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Update;
 
 import me.spring.entity.HousePhoto;
 import me.spring.entity.ImageInfo;
+import me.spring.entity.User;
+import me.spring.entity.UserHeadimg;
 
 public interface ImageInfoDAO {
 	@Insert("Insert into t_img(photocode,savingfilename,originalfilename,contenttype) "
@@ -35,4 +37,15 @@ public interface ImageInfoDAO {
             " where photocode = #{imageinfo.photocode}" +     
             "</script>")
 	public int update(@Param("imageinfo") ImageInfo imageinfo);
+
+	@Select("SELECT username,\r\n" + 
+			"	t_userheadimg.photocode,\r\n" + 
+			"	t_img.savingfilename\r\n" + 
+			"FROM\r\n" + 
+			"	`t_userheadimg`,\r\n" + 
+			"	`t_img` \r\n" + 
+			"WHERE\r\n" + 
+			"	t_userheadimg.photocode = t_img.photocode \r\n" + 
+			"	AND username = #{user.username}")
+	public UserHeadimg getHeadimg(@Param("user") User user);
 }

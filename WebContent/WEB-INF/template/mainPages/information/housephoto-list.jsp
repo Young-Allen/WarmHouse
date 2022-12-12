@@ -103,23 +103,23 @@ th{
 				
 					<button><a href="${basePath}/houseimage/check?photocode=${housephoto.photocode}" target="_blank">查看</a></button>
 					<button><a href="${basePath}/houseimage/download?photocode=${housephoto.photocode}" target="_blank">下载</a></button>
-					<button><a href="${basePath}/houseimage/edit?photocode=${housephoto.photocode}&code=${code}">编辑</a></button>
+					<button><a href="${basePath}/houseimage/edit?username=${houseinfoUsername}&photocode=${housephoto.photocode}&code=${code}">编辑</a></button>
 					<button onclick="deletePicture('${housephoto.photocode}')">删除</button>
 				</td>
 			</tr>
 		</c:forEach>
      </table>
      <span class="searchUserBtn" onclick="addHousePhoto()">添加</span>
-     <span class="searchUserBtn"><a href="${basePath}/information/listinfo?pageNum=1&pageSize=10" target="content-box">返回</a></span>
+     <span class="searchUserBtn"><a href="${basePath}/information/listinfo?username=${houseinfoUsername}&pageNum=1&pageSize=10" target="content-box">返回</a></span>
      
      <script>
      	function addHousePhoto(){
-			window.location.href  = "${basePath}/information/housePhotoEdit?code=${code}"; 
+			window.location.href  = "${basePath}/information/housePhotoEdit?username=${houseinfoUsername}&code=${code}"; 
      	}
      	function deletePicture(photocode){
      		let r = confirm("确认删除此条记录？");
      		if (r == true){
-    			window.location.href  = "${basePath}/houseimage/delete?code=${code}&photocode="+photocode; 
+    			window.location.href  = "${basePath}/houseimage/delete?username=${houseinfoUsername}&code=${code}&photocode="+photocode; 
      		}
      	}
      </script>

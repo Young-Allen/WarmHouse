@@ -84,6 +84,9 @@ html {
     <c:if test="${editflag != 1}">
         <form class="listuser" action="${basePath}/houseimage/add" method="post" target="content-box" enctype="multipart/form-data">
     </c:if>
+    
+        	<input type="text" style="display: none" name="username" value="${houseinfoUsername}"><br>
+    		
     		<c:if test="${editflag == 1}">
     			<input type="text" style="display: none" name="code" value="${housephoto.code}"><br>
     		</c:if>
@@ -133,7 +136,7 @@ html {
 	   	}
 	   	
 	   	function cancel(){
-	   		window.location.href  = "${basePath}/information/housePhotoList?code=${code}";
+	   		window.location.href  = "${basePath}/information/housePhotoList?username=${houseinfoUsername}&code=${code}";
 	   	}
 </script>
 </html>

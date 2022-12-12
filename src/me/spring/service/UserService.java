@@ -1,10 +1,15 @@
 package me.spring.service;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import com.github.pagehelper.PageInfo;
 
 import me.spring.bean.Result;
 import me.spring.entity.User;
+import me.spring.entity.UserHeadimg;
 
 public interface UserService {
     public int update(User user);
@@ -32,4 +37,8 @@ public interface UserService {
     public PageInfo<User> listUser(User user, int pageNum, int pageSize);
     
     public int addRole(User user);
+    
+	public int addHeadimg(User user, CommonsMultipartFile file, HttpServletRequest request);
+	
+	public UserHeadimg getHeadimg(User user);
 }

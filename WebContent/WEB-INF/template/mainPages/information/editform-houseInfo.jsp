@@ -116,7 +116,12 @@ html {
    			
    			<span>售房人：</span>
    			<select class="getRole" id="getRole" name="salesman">
-            	<c:forEach items="${allUser}" var="auser">
+	   			<c:if test="${houseinfoPutFlag==1}">
+          			<option value="${houseinfoUsername}" selected="selected">${houseinfoUsername}</option>
+	   			</c:if>
+	   			
+	   			<c:if test="${houseinfoPutFlag!=1}">
+	   			<c:forEach items="${allUser}" var="auser">
             		<c:if test="${auser.username == showHouseInfoTable.salesman}">
             		 	<option value="${auser.username}" selected="selected">${auser.username}</option>
             		</c:if>
@@ -124,6 +129,7 @@ html {
             		 	<option value="${auser.username}">${auser.username}</option>
             		</c:if>
             	</c:forEach>
+	   			</c:if>
 			</select><br>
    			
     		<span>房型：</span>
@@ -269,7 +275,7 @@ html {
 	   	}
 	   	
 	   	function cancel(){
-	   		window.location.href  = "${basePath}/information/listinfo?pageNum=1&pageSize=10";
+	   		window.location.href  = "${basePath}/information/listinfo?username=${houseinfoUsername}&pageNum=1&pageSize=10";
 	   	}
 </script>
 </html>

@@ -1,0 +1,97 @@
+    a{
+	    text-decoration:none;
+	    color:#fff
+    }
+    .info-box {
+        width: 85vw;
+        height: 150px;
+        background-color: rgb(137 189 243);
+        border-radius: 20px;
+        margin: auto;
+        margin-bottom: 25px;
+        overflow: visible;
+        position: relative;
+        box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+    }
+    
+    .img-box {
+        height: 80%;
+        width: 15%;
+        display: inline-block;
+        border-radius: 20px;
+        position: absolute;
+        left: -5%;
+        top: 50%;
+        overflow: visible;
+        -webkit-transform: translateY(-50%)
+    }
+    
+    .more {
+        text-align: center;
+        position: absolute;
+        border-radius: 10px;
+        width: 7vw;
+        height: 7vh;
+        line-height: 7vh;
+        left: -2%;
+        bottom: 10%;
+        cursor: pointer;
+        background: linear-gradient(to right, #e65c00, #F9D423);
+        color: #fff;
+        transition: all 0.7s;
+    }
+    .more:hover{
+    	transform: scale(1.1);
+    }
+    .info-con {
+        width: 70vw;
+        height: 100%;
+        position: relative;
+        left: 15%;
+    }
+    
+    .info-con-son1 {
+        height: 75%;
+    }
+    
+    .con-son1-1 {
+        position: absolute;
+        width: 60%;
+        height: 75%;
+        display: inline-block;
+        text-align: left;
+        white-space: normal;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+    .con-son1-1 h2{
+    	margin-left: 10px;
+    	color: #fff;
+    }
+    .con-son1-2 {
+        position: absolute;
+        right: 0;
+        width: 40%;
+        height: 75%;
+        display: inline-block;
+    }
+    
+    .con-son1-2 div {
+        text-align: center;
+        margin: 10px 0px;
+    }
+    
+    .info-house {
+        height: 25%;
+    }
+    
+    .tag1{
+     	margin-left: 10px;
+        font-weight: 700;
+    	display: inline-block;
+    	width: auto;
+    	height: auto;
+    	background-color: #fff;
+    	padding: 7px;
+    	border-radius: 10px;
+    }

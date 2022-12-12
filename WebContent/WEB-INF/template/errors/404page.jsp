@@ -10,17 +10,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>404 Not Found</title>
+<link rel="stylesheet" type="text/css" href="${basePath}/css/404.css">
 </head>
 <style>
-.bg{
-	height: 90vh;
-	width:95vw;
-}
+
 </style>
 <body>
-	<div class="bg">
-		<img style="width: 97%; height: 102%" src="${basePath}/img/welcome.jpg">
+	<h1>404 Error Page</h1>
+	<section class="error-container">
+	  <span>4</span>
+	  <span><span class="screen-reader-text">0</span></span>
+	  <span>4</span>
+	</section>
+	<div class="link-container">
+	  <a target="_blank" href="${basePath}/user/index" class="more-link">Back Home</a>
 	</div>
 </body>
 </html>

@@ -53,7 +53,7 @@
                             <input type="text" id="forget-email" name="email" value="" placeholder="请输入邮箱" />
                             <small>错误信息</small>
                         </div>
-                        <h4><a onclick="">返回登录</a></h4>
+                        <h4><a href="${basePath}/user/toLogin">返回登录</a></h4>
                         <button type="submit" class="login-submit">提交</button>
                     </form>
                 </div>

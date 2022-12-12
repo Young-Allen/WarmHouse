@@ -48,8 +48,18 @@ public class InformationController {
     }
 	
 	@RequestMapping(value = "/listinfo", produces = "text/html;charset=utf-8")
-    public String listinfo(int pageNum, int pageSize, Model model) {
+    public String listinfo(String username, int pageNum, int pageSize, Model model) {
 		HouseInformation houseinfo = new HouseInformation();
+		if(username != null && username != "") {
+			System.out.println("username 不为空：" + username);
+			houseinfo.setSalesman(username);
+			session.setAttribute("houseinfoUsername", username);
+			session.setAttribute("houseinfoPutFlag", 1);
+		}else {
+			System.out.println("username 为空：" + username);
+			session.removeAttribute("houseinfoUsername");
+			session.setAttribute("houseinfoPutFlag", -1);
+		}
 		System.out.println(houseinfo);
 		
 		PageInfo<HouseInformation> houseinfoPageInfo = houseInformationService.listHouseInfoTable(houseinfo,pageNum,pageSize);
@@ -73,13 +83,17 @@ public class InformationController {
     }
 	
 	@RequestMapping(value = "/infotb", produces = "text/html;charset=utf-8")
-    public String listSystemTable(HouseInformation houseinfo, int pageNum, int pageSize, Integer flag, Model model) {
+    public String listSystemTable(String username, HouseInformation houseinfo, int pageNum, int pageSize, Integer flag, Model model) {
+		System.out.println("username: " + username);
 		if(flag != null) {
 			if((HouseInformation)session.getAttribute("houseinfo") != null) {
 				houseinfo = (HouseInformation)session.getAttribute("houseinfo");
 			}
 		}
 		
+		if(username != null) {
+			houseinfo.setSalesman(username);
+		}
 		PageInfo<HouseInformation> houseinfoPageInfo = houseInformationService.listHouseInfoTable(houseinfo,pageNum,pageSize);
 
 		session.setAttribute("houseinfoPageInfo", houseinfoPageInfo);
@@ -122,7 +136,16 @@ public class InformationController {
     }
 	
 	@RequestMapping(value = "/housePhotoList", produces = "text/html;charset=utf-8")
-    public String housePhotoList(String code, Model model) {
+    public String housePhotoList(String username, String code, Model model) {
+		if(username != null && username != "") {
+			System.out.println("username 不为空：" + username);
+			session.setAttribute("houseinfoUsername", username);
+			session.setAttribute("houseinfoPutFlag", 1);
+		}else {
+			System.out.println("username 为空：" + username);
+			session.removeAttribute("houseinfoUsername");
+			session.setAttribute("houseinfoPutFlag", -1);
+		}
 		List<HousePhoto> housePhotoList = housePhotoService.getByCode(code);
 		model.addAttribute("housePhotoList", housePhotoList);
 		session.setAttribute("code", code);
@@ -130,7 +153,16 @@ public class InformationController {
     }
 	
 	@RequestMapping(value = "/housePhotoEdit", produces = "text/html;charset=utf-8")
-    public String housePhotoEdit(String code, Model model) {
+    public String housePhotoEdit(String username, String code, Model model) {
+		if(username != null && username != "") {
+			System.out.println("username 不为空：" + username);
+			session.setAttribute("houseinfoUsername", username);
+			session.setAttribute("houseinfoPutFlag", 1);
+		}else {
+			System.out.println("username 为空：" + username);
+			session.removeAttribute("houseinfoUsername");
+			session.setAttribute("houseinfoPutFlag", -1);
+		}
 		List<SystemTable> showhouseList = systemTableService.getSystable("t_showhouse");
 		model.addAttribute("houselocationList", showhouseList);
 		session.setAttribute("code", code);
@@ -139,7 +171,16 @@ public class InformationController {
 	
 	//添加
 	@RequestMapping(value = "/addInfotb", produces = "text/html;charset=utf-8")
-    public String addInfotb(String code, Model model) {
+    public String addInfotb(String username, String code, Model model) {
+		if(username != null && username != "") {
+			System.out.println("username 不为空：" + username);
+			session.setAttribute("houseinfoUsername", username);
+			session.setAttribute("houseinfoPutFlag", 1);
+		}else {
+			System.out.println("username 为空：" + username);
+			session.removeAttribute("houseinfoUsername");
+			session.setAttribute("houseinfoPutFlag", -1);
+		}
 		List<User> allUser = userDAO.findAll();
 		model.addAttribute("allUser", allUser);
 		model.addAttribute("houseInfoFlag", 1);
@@ -155,5 +196,5 @@ public class InformationController {
 		result = houseInformationService.add(houseinfo);
 		return "mainPages/information/infotable";
     }
-	
+
 }

@@ -1,3 +1,17 @@
+	body {
+	      margin: 0;
+	      -moz-user-select: none;
+	      /*火狐*/
+	      /*选中文字时避免出现蓝色背景*/
+	      -webkit-user-select: none;
+	      /*webkit浏览器*/
+	      /*选中文字时避免出现蓝色背景*/
+	      -ms-user-select: none;
+	      /*IE10*/
+	      /*选中文字时避免出现蓝色背景*/
+	      user-select: none;
+	      /*选中文字时避免出现蓝色背景*/
+  	}
    :root {
         --success-color: #2ecc71;
         --error-color: #e74c3c;

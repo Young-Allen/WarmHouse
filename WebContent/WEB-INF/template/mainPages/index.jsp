@@ -35,10 +35,10 @@
                   	<c:forEach var="userRole" items="${userRole}">
                   		<c:if test="${userRole.role == '普通用户' || userRole.role == '所有'}">
                   			<div class="item2">
-                        		<span class="item2_text">信息查询</span>
+                  				<span class="item2_text"><a href="${basePath}/searchInformation/listinfo?username=${user.username}&pageNum=1&pageSize=10" target="content-box">信息查询</a></span>
                     		</div>
                     		<div class="item2">
-                    		    <span class="item2_text"><a href="${basePath}/information/listinfo?pageNum=1&pageSize=10" target="content-box">信息发布</a></span>
+                    		    <span class="item2_text"><a href="${basePath}/information/listinfo?username=${user.username}&pageNum=1&pageSize=10" target="content-box">信息发布</a></span>
                     		</div>
 				    	</c:if>
 				    	<c:if test="${userRole.role == '管理员' || userRole.role == '所有'}">
@@ -67,12 +67,20 @@
        <!-- 顶部导航栏 -->
        <div class="title-nav">
            <div class="userinfo" onclick="showUserMenu()">
+               
                <span class="username">
+               	<c:if test="${userHeadimg == null}">
+               		<img class="headimg" src="${basePath}/img/0.jpg">
+   				</c:if>
+				<c:if test="${userHeadimg != null}">
+					<img  class="headimg" src="data:image/jpg;base64,${userHeadimg.dataBase64}"/>
+   				</c:if>
                	<c:if test="${user.nickname == null}">
               	 		未登录
    				</c:if>
                	${user.nickname}
                </span>
+               
                <span>
                <c:forEach var="userRole" items="${userRole}">
                	<c:if test="${userRole.role == '普通用户' || userRole.role == '所有'}">
@@ -86,10 +94,19 @@
    				</c:if>
 				</c:forEach>
                </span>
+               
+               <span style="margin-left: 180px">
+            	 	<div class="icon1" style="background-color: #606266">小组信息</div>
+            	 	<div class="icon1" style="background-color: #606266; color: red">王晓东：0204414</div>
+            	 	<div class="icon1" style="background-color: #606266">罗嘉骏：0204435</div>
+            	 	<div class="icon1" style="background-color: #606266">赖经涛：0204438</div>
+            	 	<div class="icon1" style="background-color: #606266">黄海森：0204361</div>
+               </span>
            </div>
            <div class="user-menu">
         		<span class="triangle"></span>
                	<div><a href="${basePath}/user/userInfo?username=${user.username}" target="content-box">个人信息</a></div>
+               	<div><a href="${basePath}/user/userHeadimg?username=${user.username}" target="content-box">修改头像</a></div>
                	<div><a href="${basePath}/user/logout">退出登录</a></div>
            </div>
        </div>

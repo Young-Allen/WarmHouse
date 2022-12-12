@@ -56,6 +56,7 @@
 td,
 th{
 	white-space: nowrap;
+	width: 130px;
 }
 </style>
 <body>

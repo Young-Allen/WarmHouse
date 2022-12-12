@@ -1,0 +1,153 @@
+body {
+     -moz-user-select: none;
+     /*火狐*/
+    /*选中文字时避免出现蓝色背景*/
+    -webkit-user-select: none;
+    /*webkit浏览器*/
+    /*选中文字时避免出现蓝色背景*/
+    -ms-user-select: none;
+    /*IE10*/
+    /*选中文字时避免出现蓝色背景*/
+    user-select: none;
+    /*选中文字时避免出现蓝色背景*/
+}
+/* 隐藏鼠标点击这些元素时出现的光标 */
+div, span, p {
+    caret-color: transparent;
+}
+a {
+      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
+}
+.back{
+	position: absolute;
+	display: inline-block;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgb(64,158,255);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+.back:hover{
+	background-color: rgb(47,146,249);
+}
+.container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+   
+.ul-img {
+    position: absolute;
+    display: flex;
+    width: 4200px;
+    height: 550px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.li-img {
+    list-style: none;
+    width: 800px;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 800;
+    border: 0px solid #ccc;
+}
+/* 上一张、下一张 */
+.imgInfo{
+	text-align: center;
+	position: absolute;
+	bottom: -40px;
+	width: 800px;
+	background-color: #fff;
+	color: rgb(64, 158, 255);
+}
+ .prev,
+ .next,
+ .prevhead,
+ .nexttail{
+     position: absolute;
+     height: 550px;
+     width: 80px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     top: 0;
+ }
+ 
+ .prev {
+     left: 30px;
+ }
+ .prevhead{
+ 	left: -15px;
+ }
+ .next {
+     right: 30px;
+ }
+ .nexttail{
+ 	right: -15px;
+ }
+ .prev span,
+ .next span,
+ .prevhead span,
+ .nexttail span{
+     display: block;
+     color: #fff;
+     width: 40px;
+     height: 40px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: rgba(0, 0, 0, 0.5);
+     border-radius: 50%;
+     cursor: pointer;
+     transition: all 0.5s;
+ }
+ 
+ .prev span:hover,
+ .next span:hover,
+ .prevhead span:hover,
+ .nexttail span:hover{
+ 	transform: scale(1.2)
+ }
+ /* 数字切换按钮 */
+ 
+ .num-box {
+     position: absolute;
+     left: 50%;
+     bottom: 70px;
+     transform: translate(-50%, 0);
+     z-index: 2;
+ }
+ 
+ .num-ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     display: flex;
+ }
+ 
+ .num-ul li {
+     height: 20px;
+     width: 20px;
+     border-radius: 50%;
+     background-color: rgba(0, 0, 0, 0.5);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 9px;
+     color: #fff;
+     margin: 0 4px;
+     cursor: pointer;
+     user-select: none;
+ }

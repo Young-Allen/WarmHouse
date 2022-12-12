@@ -9,7 +9,7 @@
 }
 
 .userinfo {
-    width: 500px;
+    width: 1450px;
     height: 100px;
     background-color: rgb(194, 205, 205);
     border-radius: 20px;
@@ -17,6 +17,16 @@
   	vertical-align: middle;
 }
 
+.headimg {
+   width: 70px;    
+   height: 70px; 
+   border-radius: 50%; 
+   vertical-align: middle;
+   transition: all 0.6s;
+}
+.headimg:hover{
+	transform: scale(1.1)
+}
 
 .username {
     display: inline-block;
@@ -27,7 +37,8 @@
     border-radius: 20px;
     padding: 0px 10px;
     box-shadow: 4px 4px 6px -4px black;
-  
+    font-weight: 800;
+    font-size: x-large;
 }
 
 .icon1 {

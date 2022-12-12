@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 import me.spring.entity.User;
+import me.spring.entity.UserHeadimg;
 
 @Repository
 @Mapper
@@ -64,6 +65,8 @@ public interface UserDAO {
     @Insert("Insert into t_user(username,nickname,password,phone,email) values(#{user.username},#{user.nickname},#{user.password},#{user.phone},#{user.email})")
     public int insert(@Param("user") User user);
     
+    @Insert("Insert into t_userheadimg(username,photocode) values(#{userHeadimg.username},#{userHeadimg.photocode})")
+    public int insertUserimg(@Param("userHeadimg") UserHeadimg userHeadimg);
     
     @Update("<script>update t_user\r\n" + 
     		"        <set>\r\n" + 

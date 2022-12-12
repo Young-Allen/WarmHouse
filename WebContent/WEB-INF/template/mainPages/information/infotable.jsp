@@ -32,26 +32,26 @@
 	text-align: center;
 	fontsize: 15px;
 }
-.user-manage .searchUser{
+.searchUser{
 	padding: 0px 10px;
 }
-.user-manage .searchUser .getCode,
-.user-manage .searchUser .getusername
+.searchUser .getCode,
+.searchUser .getusername
 {
     width: 200px;
 }
-.user-manage .searchUser .getTitle{
+.searchUser .getTitle{
  	width: 300px;
 }
 
-.user-manage .searchUser .getSuiteRoom,
-.user-manage .searchUser .getSuiteHall,
-.user-manage .searchUser .getsuiteBathroom
+.searchUser .getSuiteRoom,
+.searchUser .getSuiteHall,
+.searchUser .getsuiteBathroom
 {
     width: 30px;
 }
-.user-manage .searchUser .getArea,
-.user-manage .searchUser .getPrice{
+.searchUser .getArea,
+.searchUser .getPrice{
 	width: 60px;
 }
 .getDirection{
@@ -59,11 +59,11 @@
 	height: 33px;
 	border: 1px solid #ccc;
 }
-.user-manage .searchUser .getBirth{
+.searchUser .getBirth{
 	width: 60px;
 }
-.user-manage .searchUser .getFloor, 
-.user-manage .searchUser .getTotalFloor{
+.searchUser .getFloor, 
+.searchUser .getTotalFloor{
 	width: 40px;
 }
 .getHousebelong,
@@ -79,7 +79,16 @@
 	    	<form class="listuser" action="${basePath}/information/infotb" method="post" target="userTableList">
 	    		<span>注册编号：</span><input placeholder="请输入编号" type="text" class="getCode" name="code">
     			<span>房源标题：</span><input placeholder="请输入房源标题" type="text" class="getTitle" name="title">
+    			
+    			<c:if test="${houseinfoPutFlag==1}">
+    			<input name="username" value="${houseinfoUsername}" style="display:none">
+    			<span>售房人：</span><input placeholder="请输入售房人姓名" type="text" class="getSalesman" name="salesman" readonly="readonly">
+    			</c:if>
+    			<c:if test="${houseinfoPutFlag!=1}">
     			<span>售房人：</span><input placeholder="请输入售房人姓名" type="text" class="getSalesman" name="salesman">
+    			</c:if>
+    			
+    			
 	    		<span class="searchUserBtn" onclick="submitSearchUser()"><a target="usertable">查询</a></span>
 	         	<span class="searchUserBtn" onclick="add()">添加</span>
 	         	<span class="searchUserBtn" onclick="resetSearchUser()">重置</span><br>
@@ -181,9 +190,10 @@
 	    	</form>
 	    </div>	  
 	    
-	<div class="user-table" >
-   		<iframe id="userframe" name="userTableList" src="informationTable" width="100%" height="100%" frameborder="0"  scrolling="yes"></iframe>
-	</div>    
+		<div class="user-table" >
+	   		<iframe id="userframe" name="userTableList" src="informationTable" width="100%" height="100%" frameborder="0"  scrolling="yes"></iframe>
+		</div>    
+	</div>
 	
     <script>
 	    function submitSearchUser(){
@@ -197,7 +207,7 @@
 	    };
 	    
 	    function add(){
-	    	window.location.href = "${basePath}/information/addInfotb";
+	    	window.location.href = "${basePath}/information/addInfotb?username=${houseinfoUsername}";
 	    }
     </script>
 </body>

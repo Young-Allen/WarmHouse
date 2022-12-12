@@ -14,14 +14,18 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import me.spring.bean.Result;
 import me.spring.dao.UserDAO;
 import me.spring.entity.User;
+import me.spring.entity.UserHeadimg;
 import me.spring.entity.UserRole;
 import me.spring.service.UserService;
 import me.spring.utils.MailUtils;
+import me.spring.utils.RequestEntity;
 
 @Controller
 @RequestMapping("/user")
@@ -114,6 +118,12 @@ public class UserController {
 			System.out.println("勾选了记住密码");
 		}
     	
+    	UserHeadimg userHeadimg = userService.getHeadimg(user);
+    	if(userHeadimg != null) {
+        	userHeadimg.setDataBase64(RequestEntity.dataBase64(userHeadimg.getSavingfilename()));
+    	}
+    	
+		session.setAttribute("userHeadimg", userHeadimg);
 		session.setAttribute("user",resUser);
     	session.setAttribute("userRole",userRole);
     	session.setMaxInactiveInterval(-1);
@@ -217,7 +227,28 @@ public class UserController {
     		session.invalidate();
     		return "login/login";
     	}
+    	User resuser = userService.getByFactors(user);
+		session.setAttribute("user", resuser);
+
         return "mainPages/welcome";
     }
     
+
+    @RequestMapping(value = "/userHeadimg", produces = "text/html;charset=utf-8")
+    public String userHeadimg(String username, Model model){
+    	model.addAttribute("username", username);
+        return "mainPages/userHeadimg";
+    }
+    
+    @RequestMapping(value = "/userHeadimgSubmit", produces = "text/html")
+    public String userHeadimgSubmit(@RequestParam("file1") CommonsMultipartFile file, User user, Model model, HttpServletRequest request){
+		userService.addHeadimg(user,file,request);
+    	
+    	UserHeadimg userHeadimg = userService.getHeadimg(user);
+    	if(userHeadimg != null) {
+        	userHeadimg.setDataBase64(RequestEntity.dataBase64(userHeadimg.getSavingfilename()));
+    	}
+		session.setAttribute("userHeadimg", userHeadimg);
+        return "mainPages/welcome";
+    }
 }

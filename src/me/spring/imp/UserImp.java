@@ -2,21 +2,31 @@ package me.spring.imp;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import me.spring.bean.Result;
+import me.spring.dao.ImageInfoDAO;
 import me.spring.dao.UserDAO;
 import me.spring.dao.UserRoleDAO;
+import me.spring.entity.ImageInfo;
 import me.spring.entity.User;
+import me.spring.entity.UserHeadimg;
 import me.spring.entity.UserRole;
 import me.spring.service.UserService;
 import me.spring.utils.JsonUtil;
+import me.spring.utils.RequestEntity;
 import me.spring.utils.SHA1;
 
 @Service
@@ -25,6 +35,8 @@ public class UserImp implements UserService {
     UserDAO userDAO;
     @Autowired
     UserRoleDAO userRoleDAO;
+    @Autowired
+    ImageInfoDAO imageInfoDAO;
     
     @Override
     public List<User> listAll() {      
@@ -260,5 +272,32 @@ public class UserImp implements UserService {
 			return -1;
 		}
 		return 0;
+	}
+
+	@Override
+	public int addHeadimg(User user, CommonsMultipartFile file, HttpServletRequest request) {
+		UserHeadimg userHeadimg = new UserHeadimg();
+		ImageInfo imageinfo = new ImageInfo();
+		String uuid = UUID.randomUUID().toString().replace("-", "");
+		userHeadimg.setPhotocode(uuid);
+		userHeadimg.setUsername(user.getUsername());
+		int res1 = userDAO.insertUserimg(userHeadimg);
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		result = RequestEntity.saveSingleFile(request, file);
+		imageinfo = (ImageInfo)result.get("imageinfo");
+		imageinfo.setPhotocode(uuid);
+		int res2 = imageInfoDAO.insert(imageinfo);
+		return res1 + res2;
+	}
+
+	@Override
+	public UserHeadimg getHeadimg(User user) {
+		UserHeadimg res = imageInfoDAO.getHeadimg(user);
+		if(res == null) {
+			return null;
+		}else {
+			return res;
+		}
 	}
 }

@@ -100,7 +100,7 @@ th{
 				<td>${houseinfo.decoration}</td>
 				<td>${houseinfo.housestatus}</td>
 				<td>
-					<button><a href="${basePath}/information/housePhotoList?code=${houseinfo.code}" target="content-box">照片</a></button>
+					<button><a href="${basePath}/information/housePhotoList?username=${houseinfoUsername}&code=${houseinfo.code}" target="content-box">照片</a></button>
 					<button onclick="editInfo('${houseinfo.code}')"><a href="${basePath}/information/houseInfoEdit?code=${houseinfo.code}" target="content-box">编辑</a></button>
 					<button onclick="deleteInfo('${houseinfo.code}')">删除</button>
 				</td>

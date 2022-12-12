@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import me.spring.entity.HouseImgInfo;
 import me.spring.entity.HouseInformation;
+import me.spring.entity.HouseRange;
 import me.spring.entity.SystemTable;
 import me.spring.entity.TotalTable;
 
@@ -68,6 +70,42 @@ public interface HouseInformationDAO {
 			"    </where>" +
 	"</script>")
 	public List<HouseInformation> getByFactors(@Param("houseInfo") HouseInformation houseInfo);
+	
+	@Select("<script>select * from t_houseinformation\r\n" + 
+			"    <where>\r\n" + 
+			"        <if test=\"houseInfo.housebelong != null and houseInfo.housebelong != ''\">\r\n" + 
+			"            and housebelong = #{houseInfo.housebelong}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.suiteRoom != null and houseInfo.suiteRoom != ''\">\r\n" + 
+			"            and suiteRoom = #{houseInfo.suiteRoom}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.direction != null and houseInfo.direction != ''\">\r\n" + 
+			"            and direction = #{houseInfo.direction}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.decoration != null and houseInfo.decoration != ''\">\r\n" + 
+			"            and decoration = #{houseInfo.decoration}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.property != null and houseInfo.property != ''\">\r\n" + 
+			"            and property = #{houseInfo.property}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.propertyrights != null and houseInfo.propertyrights != ''\">\r\n" + 
+			"            and propertyrights = #{houseInfo.propertyrights}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.housestatus != null and houseInfo.housestatus != ''\">\r\n" + 
+			"            and housestatus = #{houseInfo.housestatus}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.floor != null and houseInfo.floor != ''\">\r\n" + 
+			"            and floor = #{houseInfo.floor}\r\n" + 
+			"        </if>\r\n" +
+			"        <if test=\"houseInfo.totalFloor != null and houseInfo.totalFloor != ''\">\r\n" + 
+			"            and totalFloor = #{houseInfo.totalFloor}\r\n" + 
+			"        </if>\r\n" +
+			"        and area between #{rangeInfo.minArea} and #{rangeInfo.maxArea}\r\n" + 
+			"        and birth between #{rangeInfo.minBirth} and #{rangeInfo.maxBirth}\r\n" + 
+			"        and price between #{rangeInfo.minPrice} and #{rangeInfo.maxPrice}\r\n" + 
+			"    </where>" +
+	"</script>")
+	public List<HouseInformation> selectByRange(@Param("houseInfo") HouseInformation houseInfo,@Param("rangeInfo") HouseRange rangeInfo);
 	
 	@Select("select * from t_houseinformation where code = #{code}")
 	public HouseInformation selectByCode(@Param("code") String code);
@@ -142,4 +180,20 @@ public interface HouseInformationDAO {
 			+ "#{houseinfo.decoration},#{houseinfo.property},#{houseinfo.propertyrights},#{houseinfo.salesman},"
 			+ "#{houseinfo.housestatus})")  
 	public int insert(@Param("houseinfo") HouseInformation houseinfo);
+	
+	@Select("SELECT code,\r\n" + 
+			"	t_housephoto.photocode,\r\n" + 
+			"	title,\r\n" + 
+			"	location,\r\n" + 
+			"	description,\r\n" + 
+			"	savingfilename,\r\n" + 
+			"	originalfilename,\r\n" + 
+			"	contenttype \r\n" + 
+			"FROM\r\n" + 
+			"	`t_housephoto`,\r\n" + 
+			"	`t_img` \r\n" + 
+			"WHERE\r\n" + 
+			"	t_housephoto.photocode = t_img.photocode \r\n" + 
+			"	AND code = #{code}")
+	public List<HouseImgInfo> getHouseImg(@Param("code") String code);
 }
