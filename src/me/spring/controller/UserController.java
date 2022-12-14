@@ -175,7 +175,8 @@ public class UserController {
     		session.setAttribute("captcha", captcha);
     		session.setAttribute("changePwdByUsername", userForget.getUsername());
     		System.out.println("开始发送邮件" + captcha);
-        	MailUtils.sendMsg(userForget.getEmail(), "重置密码", captcha);
+    		String msg = "您的验证码为：" + captcha + " 请尽快修改。如非本人操作，请忽略这封邮件。";
+        	MailUtils.sendMsg(userForget.getEmail(), "重置密码", msg);
         	model.addAttribute("showMsg", "0");
         	model.addAttribute("showLogo", "1");
         	

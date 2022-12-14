@@ -28,7 +28,25 @@
             <div class="left_daohang">
                 <!-- 第一块：一级标题1 -->
                 <div class="item1" name='1'>
-                    <span class="item1_text">系统管理</span>
+                    <span class="item1_text">用户信息管理</span>
+                    <div class="you item1_img"></div>
+                </div>
+                <div class="item1_item2">
+                  	<c:forEach var="userRole" items="${userRole}">
+				    	<c:if test="${userRole.role == '管理员' || userRole.role == '所有'}">
+                  			<div class="item2">
+                        		<span class="item2_text"><a href="${basePath}/usermanage/listuser?pageNum=1&pageSize=10" target="content-box">用户管理</a></span>
+                    		</div>
+				    	</c:if>
+				    	<c:if test="${userRole.role == '系统管理员' || userRole.role == '所有'}">
+                  			<div class="item2">
+                        		<span class="item2_text"><a href="${basePath}/userpermission/listuser?pageNum=1&pageSize=10" target="content-box">权限管理</a></span>
+                    		</div>
+				    	</c:if>
+     				</c:forEach>
+                </div>
+                <div class="item1" name='1'>
+                    <span class="item1_text">房源信息管理</span>
                     <div class="you item1_img"></div>
                 </div>
                 <div class="item1_item2">
@@ -42,17 +60,19 @@
                     		</div>
 				    	</c:if>
 				    	<c:if test="${userRole.role == '管理员' || userRole.role == '所有'}">
-                  			<div class="item2">
-                        		<span class="item2_text"><a href="${basePath}/usermanage/listuser?pageNum=1&pageSize=10" target="content-box">用户管理</a></span>
-                    		</div>
                     		<div class="item2">
                         		<span class="item2_text"><a href="${basePath}/information/listinfo?pageNum=1&pageSize=10" target="content-box">信息管理</a></span>
                     		</div>
 				    	</c:if>
+     				</c:forEach>
+                </div>
+                <div class="item1" name='1'>
+                    <span class="item1_text">系统信息管理</span>
+                    <div class="you item1_img"></div>
+                </div>
+                <div class="item1_item2">
+                  	<c:forEach var="userRole" items="${userRole}">
 				    	<c:if test="${userRole.role == '系统管理员' || userRole.role == '所有'}">
-                  			<div class="item2">
-                        		<span class="item2_text"><a href="${basePath}/userpermission/listuser?pageNum=1&pageSize=10" target="content-box">权限管理</a></span>
-                    		</div>
                     		<div class="item2">
                         		<span class="item2_text"><a href="${basePath}/systable/listsystem?pageNum=1&pageSize=10" target="content-box">系统表管理</a></span>
                     		</div>

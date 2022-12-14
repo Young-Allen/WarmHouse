@@ -30,8 +30,13 @@
     			<img style="width: 100%; height: 100%; border-radius: 20px;" src="data:image/jpg;base64,${hosueImgInfoMap[houseinfo.code][0].dataBase64}"/>
     		</c:if>
         	</div>
-    	
-        <div class="more"><a href="${basePath}/searchInformation/moreImg?code=${houseinfo.code}" target="content-box">更多照片</a></div>
+    		
+    		<c:if test="${hosueImgInfoMap[houseinfo.code][0].savingfilename == null}">
+   		        <div class="more"><a>更多照片</a></div>
+    		</c:if>
+    		<c:if test="${hosueImgInfoMap[houseinfo.code][0].savingfilename != null}">
+   		        <div class="more"><a href="${basePath}/searchInformation/moreImg?code=${houseinfo.code}" target="content-box">更多照片</a></div>
+    		</c:if>
         <div class="info-con">
             <div class="info-con-son1">
                 <div class="con-son1-1">
@@ -39,10 +44,11 @@
                 </div>
                 <div class="con-son1-2">
                     <div style="font-size:xx-large; font-weight: 800;color: #ffff00">
-                        <img src="${basePath}/img/money1.png">  ${houseinfo.price}万元
+                        <img src="${basePath}/img/money1.png">
+                        <fmt:formatNumber value="${houseinfo.price}" type="currency" currencySymbol=""></fmt:formatNumber>万元
                     </div>
                     <div>单位房价：
-                    <fmt:formatNumber value="${houseinfo.price / houseinfo.area * 10000}" type="currency"></fmt:formatNumber>元
+                    <fmt:formatNumber value="${houseinfo.price / houseinfo.area * 10000}" type="currency" currencySymbol=""></fmt:formatNumber>元
                      </div>
                 </div>
             </div>
